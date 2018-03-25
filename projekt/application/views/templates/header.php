@@ -27,13 +27,7 @@
             <a class="nav-link" href="contact">Kontakt</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="character">Opis bohatera</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="equipment">Wyposażenie</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="skills">Zdolności</a>
+            <a class="nav-link" href="character">Bohater</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="register">Zarejestruj się</a>
