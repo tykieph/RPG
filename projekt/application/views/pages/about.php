@@ -3,7 +3,7 @@
         <div class="col">
         <blockquote class="blockquote text-center">
             <p class="mb-0">Twoja stara.</p>
-            <footer class="blockquote-footer">Bartosz Krygiel <cite title="kurwisko">w chacie Drobia</cite></footer>
+            <div class="blockquote-footer">Bartosz Krygiel <cite title="kurwisko">w chacie Drobia</cite></div>
         </blockquote>
         </div>
     </div>
