@@ -4,123 +4,62 @@
     <div class="col-8">
         <ul class="list-group" id="character">
             <li class="list-group-item info_heading"><h3>CECHY</h3></li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4">Cechy główne: </div>
-                    <div class="col-1 text-center">WW</div>
-                    <div class="col-1 text-center">US</div>
-                    <div class="col-1 text-center">K</div>
-                    <div class="col-1 text-center">ODP</div>
-                    <div class="col-1 text-center">ZR</div>
-                    <div class="col-1 text-center">INT</div>
-                    <div class="col-1 text-center">SW</div>
-                    <div class="col-1 text-center">OGD</div>
-                </div>
-            </li>
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4">Początkowa: </div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                </div>
-            </li>
+            <?php
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4">Schemat rozwoju: </div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                </div>
-            </li>
+            /*      number of rows and colums       */
+            $num_rows = 4*2;
+            $num_cols = 8;
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4">Aktualna: </div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                </div>
-            </li>
+            /*      rows' names      */
+            $rows = array(
+                "Cechy główne", "Początkowa", "Schemat rozwoju", "Aktualna",
+                "Cechy drugorzędne", "Początkowa", "Schemat rozwoju", "Aktualna"
+            );
 
-            <li class="list-group-item"></li>
+            /*      cells values    */
+            $cols = array
+            (
+                0 => array("WW", "US", "K", "ODP", "ZR", "INT", "SW", "OGD"),
+                1 => array_fill(0, 8, ""),
+                2 => array_fill(0, 8, ""),
+                3 => array_fill(0, 8, ""),
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4">Cechy drugorzędne: </div>
-                    <div class="col-1 text-center">A</div>
-                    <div class="col-1 text-center">ŻYW</div>
-                    <div class="col-1 text-center">S</div>
-                    <div class="col-1 text-center">WT</div>
-                    <div class="col-1 text-center">SZ</div>
-                    <div class="col-1 text-center">MAG</div>
-                    <div class="col-1 text-center">PO</div>
-                    <div class="col-1 text-center">PP</div>
-                </div>
-            </li>
+                4 => array("A", "ŻYW", "S", "WT", "SZ", "MAG", "PO", "PP"),
+                5 => array_fill(0, 8, ""),
+                6 => array_fill(0, 8, ""),
+                7 => array_fill(0, 8, "")
+            );
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4">Początkowa: </div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                </div>
-            </li>
+            for($i = 0; $i < $num_rows; $i++)
+            {
+                if($i == 4)
+                    echo "<li class='list-group-item'></li>";
+                ?>
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4">Schemat rozwoju: </div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                </div>
-            </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-4"><?=$rows[$i].":";?></div>
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4">Aktualna: </div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                </div>
-            </li>
+                <?php
 
+                for($j = 0; $j < $num_cols; $j++)
+                {
+                    if($i == 0)
+                    /*      1st row(no border)      */
+                        echo "<div class=col-1 text-center>".$cols[$i][$j]."</div>";
+                    else
+                        echo "<div class=col-1 text-center id='cell'>".$cols[$i][$j]."</div>";
+                }
+
+                ?>
+                    </div>
+                </li>
+                <?php
+            }
+            ?>
         </ul>
     </div>
-    
     <div class="col-2"></div>
 </div>
 
