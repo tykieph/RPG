@@ -21,7 +21,7 @@
             $cols = array
             (
                 0 => array("WW", "US", "K", "ODP", "ZR", "INT", "SW", "OGD"),
-                1 => array_fill(0, 8, ""),
+                1 => array_values($cechy_glowne),
                 2 => array_fill(0, 8, ""),
                 3 => array_fill(0, 8, ""),
 
@@ -78,7 +78,7 @@
             $cols = array
             (
                 0 => array("Nazwa", "OBC.", "KAT.", "SIŁA", "ZASIĘG", "PRZEŁAD", "CECHY ORĘŻA"),
-                1 => array_fill(0, 8, "&nbsp"),
+                1 => array_values($bron),
                 2 => array_fill(0, 8, "&nbsp"),
                 3 => array_fill(0, 8, "&nbsp"),
                 4 => array_fill(0, 8, "&nbsp"),
