@@ -8,48 +8,60 @@
             <?php
 
             /*      number of rows and colums       */
-            $num_rows = 4*2;
-            $num_cols = 8;
-
-            /*      rows' names      */
-            $rows = array(
-                "Cechy główne", "Początkowa", "Schemat rozwoju", "Aktualna",
-                "Cechy drugorzędne", "Początkowa", "Schemat rozwoju", "Aktualna"
-            );
+            $num_rows = (4*2)+1;
+            $num_cols = 9;
 
             /*      cells' values    */
             $cols = array
             (
-                0 => array("WW", "US", "K", "ODP", "ZR", "INT", "SW", "OGD"),
-                1 => array_values($cechy_glowne),
-                2 => array_fill(0, 8, ""),
-                3 => array_fill(0, 8, ""),
+                0 => array("Cechy główne:", "WW", "US", "K", "ODP", "ZR", "INT", "SW", "OGD"),
+                1 => array_merge( array("Początkowa:"), array_values($cechy_glowne) ),
+                2 => array_merge( array("Schemat rozwoju:"), array_fill(0, 9, "&nbsp") ),
+                3 => array_merge( array("Aktualna:"), array_fill(0, 9, "&nbsp") ),
 
-                4 => array("A", "ŻYW", "S", "WT", "SZ", "MAG", "PO", "PP"),
-                5 => array_fill(0, 8, ""),
-                6 => array_fill(0, 8, ""),
-                7 => array_fill(0, 8, "")
+                4 => array_fill(0, 9, "&nbsp"),
+
+                5 => array("Cechy drugorzędne:", "A", "ŻYW", "S", "WT", "SZ", "MAG", "PO", "PP"),
+                6 => array_merge( array("Początkowa:"), array_values($cechy_glowne) ),
+                7 => array_merge( array("Schemat rozwoju:"), array_fill(0, 9, "&nbsp") ),
+                8 => array_merge( array("Aktualna:"), array_fill(0, 9, "&nbsp") )
+            );
+
+            /*      grid for rows       */
+            $row_grid = array(4, 1, 1, 1, 1, 1, 1, 1, 1);
+
+            /*      grid for whole table       */
+            $table_grid = array
+            (
+                0 => $row_grid,
+                1 => $row_grid,
+                2 => $row_grid,
+                3 => $row_grid,
+                4 => $row_grid,
+                5 => $row_grid,
+                6 => $row_grid,
+                7 => $row_grid,
+                8 => $row_grid
             );
 
             for($i = 0; $i < $num_rows; $i++)
             {
-                if($i == 4)
-                    echo "<li class='list-group-item'></li>";
                 ?>
 
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-4"><?=$rows[$i].":";?></div>
 
                 <?php
 
                 for($j = 0; $j < $num_cols; $j++)
                 {
-                    if($i == 0)
-                    /*      1st row(no border)      */
-                        echo "<div class='col-1 text-center'>".$cols[$i][$j]."</div>";
+                    if($i == 0 || $i == 4 || $i == 5)
+                    /*      1st and 4th row(no border)      */
+                        echo "<div class='col-".$table_grid[$i][$j]."'>";
                     else
-                        echo "<div class='col-1 text-center' id='cell'>".$cols[$i][$j]."</div>";
+                        echo "<div class='col-".$table_grid[$i][$j]."' id='cell'>";
+
+                    echo $cols[$i][$j]."</div>";
                 }
 
                 ?>
@@ -85,6 +97,20 @@
                 5 => array_fill(0, 8, "&nbsp"),
             );
 
+            /*      grid for rows       */
+            $row_grid = array(4, 1, 1, 1, 1, 1, 3);
+
+            /*      grid for whole table       */
+            $table_grid = array
+            (
+                0 => $row_grid,
+                1 => $row_grid,
+                2 => $row_grid,
+                3 => $row_grid,
+                4 => $row_grid,
+                5 => $row_grid
+            );
+
             for($i = 0; $i < $num_rows; $i++)
             {
                 ?>
@@ -93,25 +119,11 @@
                 <?php
                 for($j = 0; $j < $num_cols; $j++)
                 {
-                    /*       first row(header)       */
                     if($i == 0)
-                    {
-                        if($j == 0)
-                            echo "<div class='col-4'>";
-                        else if($j == 6)
-                            echo "<div class='col-3 text-center'>";
-                        else
-                            echo "<div class='col-1 text-center'>";
-                    }
+                    /*       first row(no border)       */
+                        echo "<div class='col-".$table_grid[$i][$j]."'>";
                     else
-                    {
-                        if($j == 0)
-                            echo "<div class='col-4' id='cell'>";
-                        else if($j == 6)
-                            echo "<div class='col-3' id='cell'>";
-                        else
-                            echo "<div class='col-1 text-center' id='cell'>";
-                    }
+                        echo "<div class='col-".$table_grid[$i][$j]."' id='cell'>";
 
                     echo $cols[$i][$j]."</div>";
                 }
@@ -128,51 +140,58 @@
         <ul class="list-group" id="character">
             <li class="list-group-item info_heading"><h3>PANCERZ</h3></li>
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-12">Opancerzenie proste: </div>
-                </div>
-            </li>
+            <?php
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-6" id="cell">Typ pancerza: </div>
-                    <div class="col-6" id="cell">Punkty zbroi: </div>
-                </div>
-            </li>
+            $num_rows = 6;
+            $num_cols = 4;
 
-            <li class="list-group-item"><div class="row"></div></li>
+            /*      cells' values    */
+            $cols = array
+            (
+                0 => array("Typ pancerza", "OBC.", "Lokacja ciała", "PZ"),
+                1 => array_values($pancerz),
+                2 => array_fill(0, 4, "&nbsp"),
+                3 => array_fill(0, 4, "&nbsp"),
+                4 => array_fill(0, 4, "&nbsp"),
+                5 => array_fill(0, 4, "&nbsp"),
+            );
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-12">Opancerzenie złożone: </div>
-                </div>
-            </li>
+            /*      grid for rows       */
+            $row_grid = array(4, 1, 6, 1);
 
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4">Typ pancerza: </div>
-                    <div class="col-1 text-center">OBC.</div>
-                    <div class="col-6">Lokacja ciała</div>
-                    <div class="col-1 text-center">PZ</div>
-                </div>
-            </li> 
+            /*      grid for whole table       */
+            $table_grid = array
+            (
+                0 => $row_grid,
+                1 => $row_grid,
+                2 => $row_grid,
+                3 => $row_grid,
+                4 => $row_grid,
+                5 => $row_grid
+            );
 
-<?php
-    for($i=0; $i<=4; $i++)
-    {
-?>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4" id="cell">&nbsp</div>
-                    <div class="col-1" id="cell"></div>
-                    <div class="col-6" id="cell"></div>
-                    <div class="col-1" id="cell"></div>
-                </div>
-            </li>
-<?php 
-    };
-?>
+            for($i = 0; $i < $num_rows; $i++)
+            {
+                ?>
+                <li class="list-group-item">
+                    <div class="row">
+                <?php
+                for($j = 0; $j < $num_cols; $j++)
+                {
+                    if($i == 0)
+                    /*       first row(no border)       */
+                        echo "<div class='col-".$table_grid[$i][$j]."'>";
+                    else
+                        echo "<div class='col-".$table_grid[$i][$j]."' id='cell'>";
+
+                    echo $cols[$i][$j]."</div>";
+                }
+                    ?>
+                    </div>
+                </li> 
+                <?php
+            }
+            ?>
         </ul>
     </div>
     <div class="col-2"></div>

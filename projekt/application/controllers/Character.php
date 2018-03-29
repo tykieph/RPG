@@ -14,6 +14,7 @@ class Character extends CI_Controller
 	{
 		$data['cechy_glowne'] = $this->character_model->cechy_glowne();
 		$data['bron'] = $this->character_model->bron();
+		$data['pancerz'] = $this->character_model->pancerz();
 		$data['title'] = "Equipment";
 
 		$this->load->view('templates/header', $data);
