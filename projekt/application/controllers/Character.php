@@ -25,10 +25,7 @@ class Character extends CI_Controller
     public function update()
     {
         $this->character_model->update();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/character_pagination', $data);
-        $this->load->view('pages/equipment', $data);
-        $this->load->view('templates/footer');
+
     }
 }
 

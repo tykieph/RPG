@@ -7,6 +7,13 @@ class Character_model extends CI_Model
 	{
 		$this->load->database();
 	}
+	public function join_tables(){
+        $this->db->select('*');
+        $this->db->from('player');
+        $this->db->join('armor','armor.player_id = id_player');
+        $this->db->join('weapon','weapon.player_id = id_player');
+        $this->db->join('cechy_glowne','cechy_glowne.player_id = id_player');
+    }
 
 	public function cechy_glowne()
 	{
@@ -34,11 +41,7 @@ class Character_model extends CI_Model
     public function update()
     {
         #$sql = "SELECT * FROM `player` join armor on id_player = armor.player_id join weapon on id_player = weapon.player_id";
-        $this->db->select('*');
-        $this->db->from('player');
-        $this->db->join('armor','armor.player_id = id_player');
-        $this->db->join('weapon','weapon.player_id = id_player');
-        $this->db->join('cechy_glowne','cechy_glowne.player_id = id_player');
+        $this->join_tables();
         $query = $this->db->get();
         $result = $query->row_array();
 
@@ -47,7 +50,7 @@ class Character_model extends CI_Model
         var_dump($_POST);
         $this->db->set($data[0],$data[1]+5);
         $this->db->where('player_id',$id);
-        return $this->db->update('cechy_glowne');
+        $this->db->update('cechy_glowne');
 
     }
 }
