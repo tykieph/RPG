@@ -51,7 +51,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $route['default_controller'] = 'pages/view';
+<<<<<<< HEAD
 $route['equipment'] = 'Player/equipment';
 $route['character'] = 'Player/character';
 $route['skills'] = 'Player/skills';
+=======
+$route['update'] = 'Character/update';
+$route['equipment'] = 'Character/equipment';
+>>>>>>> ajax-equipment
 $route['(:any)'] = 'pages/view/$1';

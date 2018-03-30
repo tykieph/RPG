@@ -31,7 +31,25 @@ class Player_model extends CI_Model
 
 		return $query->row_array();
 	}
+    public function update()
+    {
+        #$sql = "SELECT * FROM `player` join armor on id_player = armor.player_id join weapon on id_player = weapon.player_id";
+        $this->db->select('*');
+        $this->db->from('player');
+        $this->db->join('armor','armor.player_id = id_player');
+        $this->db->join('weapon','weapon.player_id = id_player');
+        $this->db->join('cechy_glowne','cechy_glowne.player_id = id_player');
+        $query = $this->db->get();
+        $result = $query->row_array();
 
+        $id = $result['player_id'];
+        $data = $_POST['pair'];
+        var_dump($_POST);
+        $this->db->set($data[0],$data[1]+5);
+        $this->db->where('player_id',$id);
+        return $this->db->update('cechy_glowne');
+
+    }
 }
 
 ?>
