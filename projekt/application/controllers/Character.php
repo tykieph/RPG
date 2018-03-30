@@ -22,7 +22,10 @@ class Character extends CI_Controller
 		$this->load->view('pages/equipment', $data);
 		$this->load->view('templates/footer');
 	}
+    public function update()
+    {
 
+    }
 }
 
 ?>
