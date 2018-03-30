@@ -49,7 +49,7 @@ class Player extends CI_Controller
         $this->player_model->update();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/character_pagination', $data);
-        $this->load->view('pages/equipment', $data);
+        $this->load->view('pages/player/equipment', $data);
         $this->load->view('templates/footer');
     }
 
