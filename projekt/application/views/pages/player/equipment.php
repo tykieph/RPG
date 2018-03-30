@@ -202,19 +202,29 @@
     <div class="col-2"></div>
 </div>
 
+
+
 <script>
-    $('[class^="click"]').click(function () {
-        console.log($(this).text(),$(this).attr('key'));
+    var selector = $('[class^="click"]');
+    selector.click(function () {
         var key = $(this).attr('key');
         var val = $(this).text();
+        console.log($(this).html());
         var pair = [key, Number(val)];
+        $(this).html(pair[1] + 5);
+        update_db(pair)
+    });
+
+
+    function update_db(pair){
         $.ajax({
             type: 'POST',
             url: 'update',
             data: {'pair': pair},
-            success:function (data) {
-                console.log(typeof data)
+            dataType: 'text',
+            success: function (result) {
+                console.log(result)
             }
         });
-    })
+    }
 </script>
