@@ -51,6 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $route['default_controller'] = 'pages/view';
-$route['update'] = 'Character/update';
-$route['equipment'] = 'Character/equipment';
+$route['equipment'] = 'Player/equipment';
+$route['character'] = 'Player/character';
+$route['skills'] = 'Player/skills';
+$route['update'] = 'Player/update';
 $route['(:any)'] = 'pages/view/$1';

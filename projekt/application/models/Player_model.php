@@ -1,6 +1,6 @@
 <?php
 
-class Character_model extends CI_Model
+class Player_model extends CI_Model
 {
 
 	public function __construct()
@@ -25,7 +25,7 @@ class Character_model extends CI_Model
 
 	public function bron()
 	{
-		$query = "select nazwa, obc, kat, sila, zasieg, przelad, cechy from weapon";
+		$query = "SELECT nazwa, obc, kat, sila, zasieg, przelad, cechy from weapon where player_id=1";
 		$query = $this->db->query($query);
 
 		return $query->row_array();
@@ -33,11 +33,12 @@ class Character_model extends CI_Model
 
 	public function pancerz()
 	{
-		$query = "select typ, obc, lokacja_ciala, pz from armor";
+		$query = "SELECT typ, obc, lokacja_ciala, pz from armor where player_id=1";
 		$query = $this->db->query($query);
 
 		return $query->row_array();
 	}
+	
     public function update()
     {
         #$sql = "SELECT * FROM `player` join armor on id_player = armor.player_id join weapon on id_player = weapon.player_id";
