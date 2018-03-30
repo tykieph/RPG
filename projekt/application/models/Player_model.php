@@ -31,6 +31,7 @@ class Player_model extends CI_Model
 
 		return $query->row_array();
 	}
+	
     public function update()
     {
         #$sql = "SELECT * FROM `player` join armor on id_player = armor.player_id join weapon on id_player = weapon.player_id";
