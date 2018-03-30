@@ -58,8 +58,13 @@
                     if($i == 0 || $i == 4 || $i == 5)
                     /*      1st and 4th row(no border)      */
                         echo "<div class='col-".$table_grid[$i][$j]."'>";
-                    else
-                        echo "<div class='click col-".$table_grid[$i][$j]."' id='cell' key='.$cols[0][$j]'>";
+                    else {
+                        if ($i < 5) {
+                            echo "<div class='click col-".$table_grid[$i][$j]."' id='cell' key='".$cols[0][$j]."'>";
+                        } else {
+                            echo "<div class='click col-".$table_grid[$i][$j]."' id='cell' key='".$cols[5][$j]."'>";
+                        }
+                    }
 
                     echo $cols[$i][$j]."</div>";
                 }
@@ -199,7 +204,17 @@
 
 <script>
     $('[class^="click"]').click(function () {
-        console.log($(this).text())
-
+        console.log($(this).text(),$(this).attr('key'));
+        var key = $(this).attr('key');
+        var val = $(this).text();
+        var pair = [key, Number(val)];
+        $.ajax({
+            type: 'POST',
+            url: 'update',
+            data: {'pair': pair},
+            success:function (data) {
+                console.log(typeof data)
+            }
+        });
     })
 </script>

@@ -40,13 +40,14 @@ class Character_model extends CI_Model
         $this->db->join('weapon','weapon.player_id = id_player');
         $this->db->join('cechy_glowne','cechy_glowne.player_id = id_player');
         $query = $this->db->get();
+        $result = $query->row_array();
 
-        foreach($query->result_array() as $row){
-
-        }
-
-
-        // return $this->db->update(table,data,id)
+        $id = $result['player_id'];
+        $data = $_POST['pair'];
+        var_dump($_POST);
+        $this->db->set($data[0],$data[1]+5);
+        $this->db->where('player_id',$id);
+        return $this->db->update('cechy_glowne');
 
     }
 }

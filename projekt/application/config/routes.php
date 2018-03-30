@@ -51,5 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $route['default_controller'] = 'pages/view';
+$route['update'] = 'Character/update';
 $route['equipment'] = 'Character/equipment';
 $route['(:any)'] = 'pages/view/$1';
